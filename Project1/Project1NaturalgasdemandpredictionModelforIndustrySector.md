@@ -57,12 +57,12 @@ It shows by sector the data recorded on a regular basis that show the demand for
 ![alt text](https://github.com/gabrielaolivera44/PREWORK_GOG/blob/master/Project1/Imagenes/calc_timeseries.png "calc_timeseries")
 
 
-## boxplot_standardized variables (data)
+## boxplot_standardized_variables (data)
 * To analyze the dependent variables to the demand by sector, a box graph was used
 * The variables analyzed are: demand, GDP, fuel oil price, and natural gas price
 * In order to make the comparison between the variables, the data was standardized
 
-![alt text](https://github.com/gabrielaolivera44/PREWORK_GOG/blob/master/Project1/Imagenes/boxplot_standardized variables.png "boxplot_standardized variables")
+![alt text](https://github.com/gabrielaolivera44/PREWORK_GOG/blob/master/Project1/Imagenes/boxplot_standardized_variables.png "boxplot_standardized_variables.png")
 
 
 ## histogram (data)
