@@ -20,25 +20,7 @@ The objective of this project is to compare the linear and multiple regression a
 ## Design
 ### Data
 The coded program loads the data of the model variables using an Excel file with the following structure:
-
-![stack Overflow](http://lmsotfy.com/so.png)
-
-
-![](https://github.com/gabrielaolivera44/PREWORK_GOG/blob/master/Project1/Imagenes/Tabla_datos.png)
-
-![alt text](https://github.com/gabrielaolivera44/PREWORK_GOG/blob/master/Project1/Imagenes/Tabla_datos.png "Logo Title Text 1")
-![alt text][logo]
-
-[logo]: https://github.com/gabrielaolivera44/PREWORK_GOG/blob/master/Project1/Images/Tabla_dato.png "Logo Title Text 2"
-
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-
-Here's our logo (hover to see the title text):
-
-Inline-style: 
-
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-
+![alt text](https://github.com/gabrielaolivera44/PREWORK_GOG/blob/master/Project1/Imagenes/Tabla_datos.png "Tabla_datos")
 
 
 
