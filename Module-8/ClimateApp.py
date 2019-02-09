@@ -46,7 +46,7 @@ def welcome():
         #f"/api/v1.0/stations"
         f"<pre>/api/v1.0/stations&#9;-&#9;List of stations from the dataset</pre>"
         #f"/api/v1.0/tobs"
-        f"<pre>/api/v1.0/tobs&#9;&#9;-&#9;List of Temperature Observations (tobs) for the previous year</pre>"
+        f"<pre>/api/v1.0/tobs&#9;&#9;-&#9;List of Temperature Observations (tobs) from a year from the last data point.</pre>"
         #f"/api/v1.0/&lt;START&gt;"
         f"<pre>/api/v1.0/&lt;START&gt;&#9;-&#9;List of TMIN, TAVG, and TMAX group by all dates greater than and equal to the start date (date format:d-m-Y)</pre>"
         #f"/api/v1.0/&lt;START&gt;/&lt;END&gt;"
@@ -98,7 +98,7 @@ def tobs():
 @app.route("/api/v1.0/<start>")
 def calc_temps(start='start_date'):
     start_date = datetime.strptime(start, '%d-%m-%Y').date()
-    #start_date = datetime.strptime('2016-08-01', '%Y-%m-%d').date()
+
     start_results = session.query(Measurement.date, \
                             func.max(Measurement.tobs), \
                             func.min(Measurement.tobs),\
