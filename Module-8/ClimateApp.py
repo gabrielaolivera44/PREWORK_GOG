@@ -43,13 +43,9 @@ def welcome():
     return (
         f"<pre>Available Routes:</pre><br/>"
         f"<pre>/api/v1.0/precipitation&#9;-&#9;The dates and precipitation observations from the last year</pre>"
-        #f"/api/v1.0/stations"
         f"<pre>/api/v1.0/stations&#9;-&#9;List of stations from the dataset</pre>"
-        #f"/api/v1.0/tobs"
         f"<pre>/api/v1.0/tobs&#9;&#9;-&#9;List of Temperature Observations (tobs) from a year from the last data point.</pre>"
-        #f"/api/v1.0/&lt;START&gt;"
         f"<pre>/api/v1.0/&lt;START&gt;&#9;-&#9;List of TMIN, TAVG, and TMAX group by all dates greater than and equal to the start date (date format:d-m-Y)</pre>"
-        #f"/api/v1.0/&lt;START&gt;/&lt;END&gt;"
         f"<pre>/api/v1.0/&lt;START&gt;/&lt;END&gt;&#9;-&#9;The TMIN, TAVG, and TMAX group by dates between the start and end date inclusive (date format:d-m-Y)</pre>"
     )
 
