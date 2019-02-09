@@ -13,7 +13,7 @@ from flask import Flask, jsonify
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///hawaii.sqlite")
+engine = create_engine("sqlite:///Resources/hawaii.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -39,19 +39,18 @@ app = Flask(__name__)
 
 @app.route("/")
 def welcome():
-    """List all routes that are available."""
+    """List all routes that are available.<br/><br/>"""
     return (
-        f"Avalable Routes:<br/>"
-        f"/api/v1.0/precipitation<br/>"
-        f"-the dates and precipitation observations from the last year<br/>"
-        f"/api/v1.0/stations"
-        f"- list of stations from the dataset<br/>"
-        f"//api/v1.0/tobs"
-        f"- list of Temperature Observations (tobs) for the previous year<br/>"
-        f"/api/v1.0/<start>"
-        f"- list of `TMIN`, `TAVG`, and `TMAX` for all dates greater than and equal to the start date<br/>"
-        f"/api/v1.0/<start>/<end>"
-        f"- the `TMIN`, `TAVG`, and `TMAX` for dates between the start and end date inclusive<br/>"
+        f"<pre>Available Routes:</pre><br/>"
+        f"<pre>/api/v1.0/precipitation&#9;-&#9;The dates and precipitation observations from the last year</pre>"
+        #f"/api/v1.0/stations"
+        f"<pre>/api/v1.0/stations&#9;-&#9;List of stations from the dataset</pre>"
+        #f"/api/v1.0/tobs"
+        f"<pre>/api/v1.0/tobs&#9;&#9;-&#9;List of Temperature Observations (tobs) for the previous year</pre>"
+        #f"/api/v1.0/&lt;START&gt;"
+        f"<pre>/api/v1.0/&lt;START&gt;&#9;-&#9;List of TMIN, TAVG, and TMAX group by all dates greater than and equal to the start date (date format:d-m-Y)</pre>"
+        #f"/api/v1.0/&lt;START&gt;/&lt;END&gt;"
+        f"<pre>/api/v1.0/&lt;START&gt;/&lt;END&gt;&#9;-&#9;The TMIN, TAVG, and TMAX group by dates between the start and end date inclusive (date format:d-m-Y)</pre>"
     )
 
 
@@ -100,24 +99,15 @@ def tobs():
 def calc_temps(start='start_date'):
     start_date = datetime.strptime(start, '%d-%m-%Y').date()
     #start_date = datetime.strptime('2016-08-01', '%Y-%m-%d').date()
-    start_results = session.query(func.max(Measurement.tobs), \
+    start_results = session.query(Measurement.date, \
+                            func.max(Measurement.tobs), \
                             func.min(Measurement.tobs),\
                             func.avg(Measurement.tobs)).\
-                            filter(Measurement.date >= start) 
-   
-    start_tobs = []
-    for tobs in start_results:
-        tobs_dict = {}
-        tobs_dict["TAVG"] = float(tobs[2])
-        tobs_dict["TMAX"] = float(tobs[0])
-        tobs_dict["TMIN"] = float(tobs[1])
-        
-        start_tobs.append(tobs_dict)
-
+                            filter(Measurement.date >= start_date). \
+                            group_by(Measurement.date).all() 
+    start_tobs=list(start_results)
     return jsonify(start_tobs)
 
-    #start_date = datetime.strptime(start, '%d-%m-%Y').date()
-    #return jsonify(start_date)
 
 @app.route("/api/v1.0/<start>/<end>")
 def calc_temps_2(start='start_date', end='end_date'):      
@@ -125,21 +115,14 @@ def calc_temps_2(start='start_date', end='end_date'):
     start_date = datetime.strptime(start, '%d-%m-%Y').date()
     end_date = datetime.strptime(end, '%d-%m-%Y').date()
 
-    start_end_results=session.query(func.max(Measurement.tobs).label("max_tobs"), \
+    start_end_results=session.query(Measurement.date, \
+                      func.max(Measurement.tobs).label("max_tobs"), \
                       func.min(Measurement.tobs).label("min_tobs"),\
                       func.avg(Measurement.tobs).label("avg_tobs")).\
-                      filter(Measurement.date.between(start_date , end_date))   
+                      filter(Measurement.date >= start_date).filter(Measurement.date <= end_date).\
+                      group_by(Measurement.date)
 
-    start_end_tobs = []
-    for tobs in start_end_results:
-        tobs_dict = {}
-        tobs_dict["TAVG"] = float(tobs[2])
-        tobs_dict["TMAX"] = float(tobs[0])
-        tobs_dict["TMIN"] = float(tobs[1])
-
-        start_end_tobs.append(tobs_dict)
-
-    
+    start_end_tobs=list(start_end_results)
     return jsonify(start_end_tobs)
 
 if __name__ == '__main__':
