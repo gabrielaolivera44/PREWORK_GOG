@@ -18,7 +18,10 @@ Open Data BCN, is part of the strategy of Barcelona Digital City, fostering a pl
 The innovation of the public sector and the involvement among companies, administrations, the academic world, organizations, communities and people, with a clear public and citizen leadership.
 
 The project will integrate the information from the source and present indicators related to:
-* Demography
-* Accidents
-* Environment
-* Transportation
+* Public Transports 
+* Stations
+* Air quality
+
+#### Sources
+https://www.kaggle.com/xvivancos/barcelona-data-sets
+http://opendata-ajuntament.barcelona.cat/data/en/dataset
