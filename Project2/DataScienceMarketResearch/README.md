@@ -1,7 +1,7 @@
 ## New New World
 
 <p align="center">
-    <img alt='Thirsty Thursday (via GIPHY)' src="https://media.giphy.com/media/afFg1TjbR9s2I/giphy.gif"/>
+    <img alt='Data Science Market Research' src="data_scnc/static/images/blog-ds-vs-da.webp"/>
 </p>
 
 
