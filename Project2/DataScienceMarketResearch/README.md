@@ -1,4 +1,4 @@
-## New New World
+## Data Science Market Research
 
 <p align="center">
     <img alt='Data Science Market Research' src="data_scnc/static/images/blog-ds-vs-da.webp"/>
